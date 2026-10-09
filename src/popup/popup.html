@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Focus Flow</title>
+  <link rel="stylesheet" href="../lib/theme.css" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body data-phase="idle">
+  <header class="top">
+    <div class="seg tabs" role="tablist" aria-label="Views">
+      <button type="button" id="tab-timer" role="tab" aria-selected="true" aria-controls="panel-timer" tabindex="0">Timer</button>
+      <button type="button" id="tab-tasks" role="tab" aria-selected="false" aria-controls="panel-tasks" tabindex="-1">Tasks</button>
+      <button type="button" id="tab-stats" role="tab" aria-selected="false" aria-controls="panel-stats" tabindex="-1">Stats</button>
+    </div>
+    <button type="button" id="settingsBtn" class="icon-btn" aria-label="Settings" title="Settings">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M9.87 5.02L10.25 2.05A10.1 10.1 0 0 1 13.75 2.05L14.13 5.02A7.3 7.3 0 0 1 16.98 6.66L19.74 5.51A10.1 10.1 0 0 1 21.49 8.55L19.11 10.36A7.3 7.3 0 0 1 19.11 13.64L21.49 15.45A10.1 10.1 0 0 1 19.74 18.49L16.98 17.34A7.3 7.3 0 0 1 14.13 18.98L13.75 21.95A10.1 10.1 0 0 1 10.25 21.95L9.87 18.98A7.3 7.3 0 0 1 7.02 17.34L4.26 18.49A10.1 10.1 0 0 1 2.51 15.45L4.89 13.64A7.3 7.3 0 0 1 4.89 10.36L2.51 8.55A10.1 10.1 0 0 1 4.26 5.51L7.02 6.66A7.3 7.3 0 0 1 9.87 5.02Z"/>
+        <circle cx="12" cy="12" r="3"/>
+      </svg>
+    </button>
+  </header>
+
+  <main class="panels">
+    <section id="panel-timer" class="panel timer" role="tabpanel" aria-labelledby="tab-timer" tabindex="0">
+      <p id="phaseLabel" class="phase" aria-live="polite">Ready to focus</p>
+
+      <div class="dial">
+        <svg class="ring" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+          <circle class="ring-track" cx="60" cy="60" r="57"/>
+          <circle id="ringArc" class="ring-arc" cx="60" cy="60" r="57" transform="rotate(-90 60 60)"/>
+        </svg>
+        <div class="dial-face">
+          <div id="clock" class="clock num" role="timer" aria-live="off">25:00</div>
+          <div id="rounds" class="rounds" role="img" aria-label="Round 1 of 4"></div>
+        </div>
+      </div>
+
+      <button type="button" id="primaryBtn" class="btn primary lg block" disabled>Start focus</button>
+
+      <div id="secondary" class="secondary is-off">
+        <button type="button" id="skipBtn" class="btn quiet sm">Skip</button>
+        <button type="button" id="resetBtn" class="btn quiet sm">Reset</button>
+      </div>
+
+      <div id="blockNote" class="note"></div>
+    </section>
+
+    <section id="panel-tasks" class="panel tasks is-off" role="tabpanel" aria-labelledby="tab-tasks" tabindex="0">
+      <form id="addForm" class="add" autocomplete="off">
+        <input id="taskInput" type="text" aria-label="New task" placeholder="Add a study task…" maxlength="140" />
+        <button type="submit" class="btn">Add</button>
+      </form>
+      <ul id="taskList" class="task-list" aria-label="Tasks"></ul>
+      <p id="taskEmpty" class="empty hidden">No tasks yet. Add the one thing you want to finish.</p>
+      <div id="taskFoot" class="task-foot hidden">
+        <span id="taskCount" class="count num">0 of 0 done</span>
+        <button type="button" id="clearDone" class="btn quiet sm">Clear done</button>
+      </div>
+    </section>
+
+    <section id="panel-stats" class="panel stats is-off" role="tabpanel" aria-labelledby="tab-stats" tabindex="0">
+      <div class="hero">
+        <p class="hero-value">
+          <span id="todayValue" class="today num">0<span class="unit">m</span></span><span id="goalOf" class="of"></span>
+        </p>
+        <span id="goalPct" class="pct num"></span>
+      </div>
+      <div id="goalBar" class="progress" role="progressbar" aria-label="Daily goal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+      <p id="sessionLine" class="sessions"></p>
+
+      <div id="chart" class="chart" role="img" aria-label="Focus time, last 7 days"></div>
+
+      <button type="button" id="dashboardBtn" class="link">
+        Full dashboard
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </section>
+  </main>
+
+  <script src="../lib/common.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

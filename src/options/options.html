@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Focus Flow settings</title>
+  <link rel="stylesheet" href="../lib/theme.css">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="page">
+    <header class="page-head">
+      <img class="logo" src="../../icons/icon48.png" srcset="../../icons/icon32.png 1x, ../../icons/icon128.png 2x" width="32" height="32" alt="">
+      <div>
+        <h1>Focus Flow</h1>
+        <p class="page-sub">Settings and focus history</p>
+      </div>
+    </header>
+
+    <main class="sections">
+      <section id="permBanner" class="section hidden" aria-label="Site access">
+        <div class="group">
+          <div class="row banner-row">
+            <div class="row-text">
+              <span class="row-label">Site access is off</span>
+              <span class="row-hint">Without it, blocked sites show the browser’s error page instead of the Focus Flow block page.</span>
+            </div>
+            <button id="permGrant" class="btn primary sm" type="button">Allow site access</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="h-timer">
+        <h2 class="group-title" id="h-timer">Timer</h2>
+        <div class="group">
+          <label class="row" for="focusMin">
+            <span class="row-text">
+              <span class="row-label" id="focusMin-l">Focus</span>
+              <span class="row-hint" id="focusMin-h"></span>
+            </span>
+            <span class="field-num">
+              <input id="focusMin" type="number" inputmode="numeric" min="1" max="180" step="1" aria-labelledby="focusMin-l focusMin-u" aria-describedby="focusMin-h">
+              <span class="unit" id="focusMin-u">min</span>
+            </span>
+          </label>
+          <label class="row" for="shortBreakMin">
+            <span class="row-text">
+              <span class="row-label" id="shortBreakMin-l">Short break</span>
+              <span class="row-hint" id="shortBreakMin-h"></span>
+            </span>
+            <span class="field-num">
+              <input id="shortBreakMin" type="number" inputmode="numeric" min="1" max="90" step="1" aria-labelledby="shortBreakMin-l shortBreakMin-u" aria-describedby="shortBreakMin-h">
+              <span class="unit" id="shortBreakMin-u">min</span>
+            </span>
+          </label>
+          <label class="row" for="longBreakMin">
+            <span class="row-text">
+              <span class="row-label" id="longBreakMin-l">Long break</span>
+              <span class="row-hint" id="longBreakMin-h"></span>
+            </span>
+            <span class="field-num">
+              <input id="longBreakMin" type="number" inputmode="numeric" min="1" max="90" step="1" aria-labelledby="longBreakMin-l longBreakMin-u" aria-describedby="longBreakMin-h">
+              <span class="unit" id="longBreakMin-u">min</span>
+            </span>
+          </label>
+          <label class="row" for="cyclesBeforeLongBreak">
+            <span class="row-text">
+              <span class="row-label" id="cyclesBeforeLongBreak-l">Rounds before a long break</span>
+              <span class="row-hint" id="cyclesBeforeLongBreak-h"></span>
+            </span>
+            <span class="field-num no-unit">
+              <input id="cyclesBeforeLongBreak" type="number" inputmode="numeric" min="1" max="12" step="1" aria-labelledby="cyclesBeforeLongBreak-l" aria-describedby="cyclesBeforeLongBreak-h">
+            </span>
+          </label>
+          <label class="row" for="dailyGoalMin">
+            <span class="row-text">
+              <span class="row-label" id="dailyGoalMin-l">Daily goal</span>
+              <span class="row-hint" id="dailyGoalMin-h" data-default="0 turns the goal off">0 turns the goal off</span>
+            </span>
+            <span class="field-num">
+              <input id="dailyGoalMin" type="number" inputmode="numeric" min="0" max="1440" step="5" aria-labelledby="dailyGoalMin-l dailyGoalMin-u" aria-describedby="dailyGoalMin-h">
+              <span class="unit" id="dailyGoalMin-u">min</span>
+            </span>
+          </label>
+          <label class="row is-toggle">
+            <span class="row-text">
+              <span class="row-label" id="autoStartBreaks-l">Auto-start breaks</span>
+              <span class="row-hint" id="autoStartBreaks-h">Starts each break as soon as a focus block ends.</span>
+            </span>
+            <span class="switch">
+              <input id="autoStartBreaks" type="checkbox" role="switch" aria-labelledby="autoStartBreaks-l" aria-describedby="autoStartBreaks-h">
+              <span class="track"></span>
+            </span>
+          </label>
+          <label class="row is-toggle">
+            <span class="row-text">
+              <span class="row-label" id="autoStartFocus-l">Auto-start focus</span>
+              <span class="row-hint" id="autoStartFocus-h">Starts the next focus block when a break ends.</span>
+            </span>
+            <span class="switch">
+              <input id="autoStartFocus" type="checkbox" role="switch" aria-labelledby="autoStartFocus-l" aria-describedby="autoStartFocus-h">
+              <span class="track"></span>
+            </span>
+          </label>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="h-block">
+        <h2 class="group-title" id="h-block">Blocking</h2>
+        <div class="group">
+          <div class="row seg-row">
+            <div class="row-text">
+              <span class="row-label" id="blockMode-l">When to block</span>
+              <span class="row-hint" id="blockMode-h"></span>
+            </div>
+            <div class="seg" id="blockMode" role="radiogroup" aria-labelledby="blockMode-l" aria-describedby="blockMode-h">
+              <button type="button" role="radio" data-val="duringFocus" aria-checked="true" tabindex="0">During focus</button>
+              <button type="button" role="radio" data-val="always" aria-checked="false" tabindex="-1">Always</button>
+            </div>
+          </div>
+          <label class="row is-toggle">
+            <span class="row-text">
+              <span class="row-label" id="strictMode-l">Strict mode</span>
+              <span class="row-hint" id="strictMode-h">Hides Skip and Reset once a focus block starts and removes the early exit from the block page.</span>
+            </span>
+            <span class="switch">
+              <input id="strictMode" type="checkbox" role="switch" aria-labelledby="strictMode-l" aria-describedby="strictMode-h">
+              <span class="track"></span>
+            </span>
+          </label>
+          <div class="row stack">
+            <label class="row-label" for="blockInput">Blocked sites</label>
+            <form id="blockForm" class="add-row" novalidate>
+              <input id="blockInput" type="text" placeholder="example.com" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="blockMsg">
+              <button class="btn" type="submit">Add</button>
+            </form>
+            <p id="blockMsg" class="field-msg" aria-live="polite"></p>
+            <ul id="blocklist" class="chips" aria-label="Blocked sites"></ul>
+          </div>
+        </div>
+        <p class="group-note" id="blockCount"></p>
+      </section>
+
+      <section class="section" aria-labelledby="h-look">
+        <h2 class="group-title" id="h-look">Appearance</h2>
+        <div class="group">
+          <div class="row stack">
+            <span class="row-label" id="theme-l">Theme</span>
+            <div id="themeGrid" class="theme-grid" role="group" aria-labelledby="theme-l"></div>
+          </div>
+          <div class="row" id="accentRow">
+            <div class="row-text">
+              <span class="row-label" id="accent-l">Accent</span>
+              <span class="row-hint" id="accentName"></span>
+            </div>
+            <div id="accentSwatches" class="swatches" role="group" aria-labelledby="accent-l"></div>
+          </div>
+          <label class="row is-toggle">
+            <span class="row-text">
+              <span class="row-label" id="notifications-l">Notifications</span>
+              <span class="row-hint" id="notifications-h">Shows a notification when a focus block or break ends.</span>
+            </span>
+            <span class="switch">
+              <input id="notifications" type="checkbox" role="switch" aria-labelledby="notifications-l" aria-describedby="notifications-h">
+              <span class="track"></span>
+            </span>
+          </label>
+        </div>
+        <p class="group-note hidden" id="themeNote"></p>
+      </section>
+
+      <section class="section" id="stats" aria-labelledby="h-stats">
+        <div class="section-head">
+          <h2 class="group-title" id="h-stats">Focus history</h2>
+          <p class="all-time">All time: <span id="allTime" class="num">0m</span></p>
+        </div>
+        <div class="group">
+          <dl class="tiles">
+            <div class="tile">
+              <dt>This week</dt>
+              <dd id="sWeek" class="tile-value"></dd>
+            </div>
+            <div class="tile">
+              <dt>Best day</dt>
+              <dd id="sBest" class="tile-value"></dd>
+            </div>
+            <div class="tile">
+              <dt>Total sessions</dt>
+              <dd id="sSessions" class="tile-value"></dd>
+            </div>
+            <div class="tile">
+              <dt id="sGoalLabel">Goal days (7d)</dt>
+              <dd id="sGoal" class="tile-value"></dd>
+            </div>
+          </dl>
+          <div class="chart-block">
+            <div class="chart-head">
+              <span>Last 14 days</span>
+              <span id="goalKey" class="goal-key hidden"><span class="goal-swatch" aria-hidden="true"></span><span id="goalKeyText"></span></span>
+            </div>
+            <div class="chart-area">
+              <div id="chart14" class="chart" role="list" aria-label="Focus time, last 14 days"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="h-data">
+        <h2 class="group-title" id="h-data">Data</h2>
+        <div class="group">
+          <div class="row data-row">
+            <button id="exportBtn" class="btn" type="button">Export data (JSON)</button>
+            <div class="data-danger">
+              <button id="resetStats" class="btn danger" type="button">Reset stats</button>
+              <button id="resetAll" class="btn danger" type="button">Reset everything</button>
+            </div>
+          </div>
+        </div>
+        <p class="group-note">The export contains your settings, tasks and focus history.</p>
+      </section>
+    </main>
+
+    <footer class="foot">Focus Flow keeps everything on this device. No accounts, no tracking.</footer>
+  </div>
+
+  <script src="../lib/common.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

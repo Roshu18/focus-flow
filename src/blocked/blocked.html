@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Site blocked</title>
+  <link rel="icon" href="../../icons/icon32.png">
+  <link rel="stylesheet" href="../lib/theme.css">
+  <link rel="stylesheet" href="blocked.css">
+</head>
+<body data-phase="focus">
+  <main id="page" class="page" data-mode="pending">
+    <header id="intro" class="intro">
+      <h1 id="title" class="title">This site is blocked</h1>
+      <p id="subtitle" class="subtitle hidden"></p>
+    </header>
+
+    <div id="dial" class="dial hidden" role="timer">
+      <svg class="ring" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+        <circle class="ring-track" cx="60" cy="60" r="57"/>
+        <circle id="ringArc" class="ring-arc is-empty" cx="60" cy="60" r="57" transform="rotate(-90 60 60)"/>
+      </svg>
+      <div class="dial-face">
+        <span id="dialTime" class="dial-time num">00:00</span>
+        <span id="dialLabel" class="dial-label">left in focus</span>
+      </div>
+    </div>
+
+    <div id="task" class="task hidden">
+      <p id="taskKicker" class="task-kicker">You were working on</p>
+      <p id="taskText" class="task-text"></p>
+    </div>
+
+    <div class="actions">
+      <div class="buttons">
+        <button id="primaryBtn" type="button" class="btn primary lg"><span id="primaryText">Back to studying</span></button>
+        <button id="holdBtn" type="button" class="hold-btn hidden" aria-describedby="holdHint">
+          <span class="hold-fill" aria-hidden="true"></span>
+          <span id="holdText" class="hold-text">Hold to end focus</span>
+        </button>
+      </div>
+      <button id="bypassLink" type="button" class="link-btn hidden">I need to stop early</button>
+      <p id="holdHint" class="hold-hint hidden">Press and hold for 3 seconds.</p>
+      <p id="strictMsg" class="strict hidden">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11"/></svg>
+        <span>Strict mode is on. This block can’t be ended early.</span>
+      </p>
+    </div>
+  </main>
+
+  <script src="../lib/common.js"></script>
+  <script src="blocked.js"></script>
+</body>
+</html>

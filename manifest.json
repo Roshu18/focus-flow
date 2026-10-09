@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "Focus Flow - Study Timer & Site Blocker",
+  "version": "1.1.0",
+  "description": "A calm Pomodoro timer and site blocker for studying, with a task list and private focus history. Works on Chrome, Edge and Firefox.",
+  "minimum_chrome_version": "121",
+  "action": {
+    "default_title": "Focus Flow",
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "icons/toolbar/focus-16.png",
+      "24": "icons/toolbar/focus-24.png",
+      "32": "icons/toolbar/focus-32.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "src/background.js",
+    "scripts": [
+      "src/lib/common.js",
+      "src/background.js"
+    ]
+  },
+  "options_ui": {
+    "page": "src/options/options.html",
+    "open_in_tab": true
+  },
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications",
+    "declarativeNetRequest"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/blocked/blocked.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "focus-flow@studyfocus.app",
+      "strict_min_version": "121.0"
+    }
+  }
+}
